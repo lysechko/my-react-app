@@ -1,14 +1,12 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-const ListItems = ({ contacts}) => {
+const ListItems = ({ contacts }) => {
   return (
-    <div>
+    <ul>
       {contacts &&
-        contacts.map(contact => (
-          <ListItem {...contacts}/>
-        ))}
-    </div>
+        contacts.map((contact, i) => <ListItem key={i} {...contact} />)}
+    </ul>
   );
 };
 

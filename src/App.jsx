@@ -1,38 +1,40 @@
-import React, {Component} from 'react';
-import ListItems from './components/list/ListItems'
+import React, { Component } from 'react';
+import ListItems from './components/list/ListItems';
 import axios from 'axios';
 
 import './App.css';
-import './components/list/ListItems'
+import './components/list/ListItems';
 
-export class App extends  Component {
-    state={
-      contacts:[]
-    }
+export class App extends Component {
+  state = {
+    contacts: []
+  };
 
-fetchData = async url => {
-  const resp = await axios.get(url);
-  const data = await resp.data;
-  return await data
-}
+  render() {
+    return (
+      <div className='App'>
+        <h1 className='header'>Contacts</h1>
+        <ListItems
+          contacts={this.state.contacts}
+          handlerClick={this.handlerClick}
+        />
+      </div>
+    );
+  }
 
-async componentDidMount(){
-  const url = 'https://www.danfoss.com/umbraco/Api/ContactsApi/GetContacts?filter=countryCode%3AGB&pageid=42800';
-  const response = await this.fetchData(url)
-  this.setState({
-    contacts:response
-  })
-}
+  fetchData = async url => {
+    const resp = await axios.get(url);
+    const data = await resp.data;
+    return await data;
+  };
 
-
-render(){
-  return (
-    <div className="App">
-      Contacts
-      <ListItems />
-    </div>
-  );
-}
+  async componentDidMount() {
+    const url = 'http://www.mocky.io/v2/5d779fe43200005300923f3e';
+    const response = await this.fetchData(url);
+    this.setState({
+      contacts: response.items
+    });
+  }
 }
 
 export default App;
