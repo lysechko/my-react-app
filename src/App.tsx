@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import ListItems from './components/list/ListItems';
-import axios from 'axios';
-
-import './App.css';
 import './components/list/ListItems';
+import axios from 'axios';
+import './App.css';
+
+export interface IListItem {
+  companyName: string;
+  address: string;
+  zipCode: string;
+  city: string;
+  countryName: string;
+}
 
 interface IProps {}
 
 interface IState {
-  contacts: object[];
+  contacts: IListItem[] | [];
 }
 
 export class App extends Component<IProps, IState> {

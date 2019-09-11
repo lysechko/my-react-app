@@ -1,14 +1,7 @@
 import React from 'react';
+import { IListItem } from '../../App';
 
-interface IListItemProps {
-  companyName?: string;
-  address?: string;
-  zipCode?: string;
-  city?: string;
-  countryName?: string;
-}
-
-const ListItem: React.SFC<IListItemProps> = ({
+const ListItem: React.SFC<IListItem> = ({
   companyName,
   address,
   zipCode,
