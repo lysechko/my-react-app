@@ -14,10 +14,7 @@ export class App extends Component {
     return (
       <div className='App'>
         <h1 className='header'>Contacts</h1>
-        <ListItems
-          contacts={this.state.contacts}
-          handlerClick={this.handlerClick}
-        />
+        <ListItems contacts={this.state.contacts} />
       </div>
     );
   }
