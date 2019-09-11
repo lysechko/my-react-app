@@ -11,8 +11,8 @@ const ListItems: React.SFC<IListItemsProps> = ({
 }: IListItemsProps) => {
   return (
     <ul>
-      {contacts.length > 0 &&
-        contacts.map((contact, i) => <ListItem {...contact} />)}
+      {contacts &&
+        contacts.map((contact, i) => <ListItem key={i} {...contact} />)}
     </ul>
   );
 };
