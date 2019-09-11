@@ -5,7 +5,13 @@ import axios from 'axios';
 import './App.css';
 import './components/list/ListItems';
 
-export class App extends Component {
+interface IProps {}
+
+interface IState {
+  contacts: object[];
+}
+
+export class App extends Component<IProps, IState> {
   state = {
     contacts: []
   };
@@ -19,7 +25,7 @@ export class App extends Component {
     );
   }
 
-  fetchData = async url => {
+  fetchData = async (url: string) => {
     const resp = await axios.get(url);
     const data = await resp.data;
     return await data;
