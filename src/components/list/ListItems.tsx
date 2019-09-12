@@ -4,12 +4,16 @@ import { IListItem } from '../../App';
 
 interface IListItemsProps {
   contacts: IListItem[];
+  loader: boolean;
 }
 
 const ListItems: React.SFC<IListItemsProps> = ({
-  contacts
+  contacts,
+  loader
 }: IListItemsProps) => {
-  return (
+  return loader ? (
+    <div className='loader'></div>
+  ) : (
     <ul>
       {contacts &&
         contacts.map((contact, i) => <ListItem key={i} {...contact} />)}

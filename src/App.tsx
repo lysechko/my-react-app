@@ -16,18 +16,20 @@ interface IProps {}
 
 interface IState {
   contacts: IListItem[] | [];
+  loader: boolean;
 }
 
 export class App extends Component<IProps, IState> {
   state = {
-    contacts: []
+    contacts: [],
+    loader: true
   };
 
   render() {
     return (
       <div className='App'>
         <h1 className='header'>Contacts</h1>
-        <ListItems contacts={this.state.contacts} />
+        <ListItems contacts={this.state.contacts} loader={this.state.loader} />
       </div>
     );
   }
@@ -38,11 +40,17 @@ export class App extends Component<IProps, IState> {
     return await data;
   };
 
+  timeout = (m: number) => {
+    return new Promise(resolve => setTimeout(resolve, m));
+  };
+
   async componentDidMount() {
     const url = 'http://www.mocky.io/v2/5d779fe43200005300923f3e';
     const response = await this.fetchData(url);
+    await this.timeout(3000);
     this.setState({
-      contacts: response.items
+      contacts: response.items,
+      loader: false
     });
   }
 }
