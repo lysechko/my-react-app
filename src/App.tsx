@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListItems from './components/list/ListItems';
-import './components/list/ListItems';
+import Forms from './components/form/Form';
 import axios from 'axios';
 import './App.css';
 
@@ -10,6 +10,7 @@ export interface IListItem {
   zipCode: string;
   city: string;
   countryName: string;
+  loader: boolean;
 }
 
 interface IProps {}
@@ -29,6 +30,7 @@ export class App extends Component<IProps, IState> {
     return (
       <div className='App'>
         <h1 className='header'>Contacts</h1>
+        <Forms />
         <ListItems contacts={this.state.contacts} loader={this.state.loader} />
       </div>
     );
